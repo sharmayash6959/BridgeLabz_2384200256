@@ -1,0 +1,38 @@
+using System;
+
+class GCDLCMCalculator
+{
+    static void Main()
+    {
+        int num1 = GetNumber("Enter first number: ");
+        int num2 = GetNumber("Enter second number: ");
+        
+        int gcd = GCD(num1, num2);
+        int lcm = LCM(num1, num2, gcd);
+        
+        Console.WriteLine($"GCD of {num1} and {num2} is {gcd}");
+        Console.WriteLine($"LCM of {num1} and {num2} is {lcm}");
+    }
+
+    static int GetNumber(string message)
+    {
+        Console.Write(message);
+        return int.Parse(Console.ReadLine());
+    }
+
+    static int GCD(int a, int b)
+    {
+        while (b != 0)
+        {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    static int LCM(int a, int b, int gcd)
+    {
+        return (a / gcd) * b;
+    }
+}
